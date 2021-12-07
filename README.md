@@ -6,24 +6,25 @@ This will be initially built as a single node system, and will grow into an actu
 ### Installation
 
 0. Prereqs
-
-- I'm running Ubuntu 20.04 on the original whitney machine but will switch to a Debian distro for the new hardware.
+I'm running Ubuntu 20.04 on the original whitney machine but will switch to a Debian distro for the new hardware.
 
 1. Prep Steps 
-- https://phoenixnap.com/kb/how-to-install-kubernetes-on-a-bare-metal-server
-
-...Disable swap, k8s may thrash disk and thus won't run if swap enabled.
+https://phoenixnap.com/kb/how-to-install-kubernetes-on-a-bare-metal-server
++
+Disable swap, k8s may thrash disk and thus won't run if swap enabled.
++
 `sudo swapoff -a`
 
-...Set iptables tooling to use legacy mode because kubeadm cmds don't work with nftables.
+Set iptables tooling to use legacy mode because kubeadm cmds don't work with nftables.
 ```
 sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
 sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
 sudo update-alternatives --set arptables /usr/sbin/arptables-legacy
 sudo update-alternatives --set ebtables /usr/sbin/ebtables-legacy
 ```
-
-...Open the required ports on the firewall on master node.
++
+Open the required ports on the firewall on master node.
++
 ```
 sudo ufw allow 6443/tcp
 sudo ufw allow 2379/tcp
