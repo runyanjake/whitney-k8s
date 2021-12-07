@@ -3,13 +3,13 @@ It's https://github.com/runyanjake/whitney, now with Kubernetes!
 
 This will be initially built as a single node system, and will grow into an actual cluster as I source server hardware. For now it will serve as a more robust container management solution.
 
-### Installation
+## Installation
 
-##### Prereqs
+#### Prereqs
 
 I'm running Ubuntu 20.04 on the original whitney machine but will switch to a Debian distro for the new hardware.
 
-##### Prep Steps 
+#### Prep Steps 
 
 https://phoenixnap.com/kb/how-to-install-kubernetes-on-a-bare-metal-server
 
@@ -117,7 +117,7 @@ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
 Wait until confirmation that k8s has started successfully. SAVE THE KUBEADM JOIN MESSAGE FOR FUTURE USE
 
-##### Configure kubectl for non-root users
+#### Configure kubectl for non-root users
 
 ```
 mkdir -p $HOME/.kube
@@ -125,7 +125,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-##### Install a Pod network addon
+#### Install a Pod network addon
 
 Necessary for pods to communicate effectively. The doc recommends Flannel but i'll use Weave Net..  
 
@@ -135,7 +135,7 @@ Necessary for pods to communicate effectively. The doc recommends Flannel but i'
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 ```
 
-##### Connect worker nodes
+#### Connect worker nodes
 
 Use the kubeadm command saved from earlier to join worker bees into the swarm..  
 
