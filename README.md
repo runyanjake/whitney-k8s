@@ -5,11 +5,11 @@ This will be initially built as a single node system, and will grow into an actu
 
 ### Installation
 
-0. Prereqs
+##### Prereqs
 
 I'm running Ubuntu 20.04 on the original whitney machine but will switch to a Debian distro for the new hardware.
 
-1. Prep Steps 
+##### Prep Steps 
 
 https://phoenixnap.com/kb/how-to-install-kubernetes-on-a-bare-metal-server
 
@@ -46,7 +46,7 @@ sudo ufw allow 10255/tcp
 sudo ufw reload
 ```
 
-2. Install & Configure Docker
+##### Install & Configure Docker
 
 Install docker.
 
@@ -85,7 +85,7 @@ systemctl daemon-reload
 systemctl restart kubelet
 ```
 
-3. Install Kubernetes
+##### Install Kubernetes
 
 Check availability
 
@@ -117,7 +117,7 @@ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
 Wait until confirmation that k8s has started successfully. SAVE THE KUBEADM JOIN MESSAGE FOR FUTURE USE
 
-4. Configure kubectl for non-root users
+##### Configure kubectl for non-root users
 
 ```
 mkdir -p $HOME/.kube
@@ -125,7 +125,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-5. Install a Pod network addon
+##### Install a Pod network addon
 
 Necessary for pods to communicate effectively. The doc recommends Flannel but i'll use Weave Net..  
 
@@ -135,7 +135,7 @@ Necessary for pods to communicate effectively. The doc recommends Flannel but i'
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 ```
 
-6. Connect worker nodes
+##### Connect worker nodes
 
 Use the kubeadm command saved from earlier to join worker bees into the swarm..  
 
