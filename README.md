@@ -9,6 +9,9 @@ This will be initially built as a single node system, and will grow into an actu
 
 Running on Ubuntu Server 22.04
 
+Github CLI (optional, for downloading this repo easier)
+https://www.techiediaries.com/install-github-cli-ubuntu-20/
+
 #### Docker and K8s Installation Steps 
 
 https://www.letscloud.io/community/how-to-install-kubernetesk8s-and-docker-on-ubuntu-2004
