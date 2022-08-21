@@ -14,7 +14,9 @@ https://www.techiediaries.com/install-github-cli-ubuntu-20/
 
 #### Every Restart Notes
 
-Sometimes swap is on again on restart. If the kubelet process (the daemon) gets stuck while running check your `/etc/fstab` and make sure the line about swap is removed so that the swap file isn't mounted. This needs to happen even if the `swapoff -a` is done.
+Sometimes swap is on again on restart. 
+If the kubelet process (the daemon) gets stuck while running check your `/etc/fstab` and make sure the line about swap is removed so that the swap file isn't mounted. This needs to happen even if the `swapoff -a` is done, as fstab gets edited under the hood with swapoff.
+After doing this, k8s should work on startup.
 
 #### Docker and K8s Installation Steps 
 
