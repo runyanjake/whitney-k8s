@@ -59,3 +59,9 @@ Check for success with
 ```
 kubectl get nodes
 ```
+
+##### Remove Taint on Master Node
+
+In order to schedule stuff on the master node, you must remove the taint on the master that disallows scheduling on the node (Can see this with `kubectl describe node master-node`.
+
+`kubectl patch node master-node -p '{"spec":{"taints":[]}}'`
