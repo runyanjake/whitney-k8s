@@ -42,7 +42,15 @@ Necessary for pods to communicate effectively. The doc recommends Flannel but i'
 
 ```
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+
 ```
+
+Untaint the master node - This is some weird step that you have to do for the master node to be allowed to work as a worker node. Otherwise there will be issues with the cluster.
+
+```
+kubectl taint nodes --all node-role.kubernetes.io/master-
+```
+
 
 ##### Connect worker nodes
 
