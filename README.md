@@ -12,6 +12,12 @@ Running on Ubuntu Server 22.04
 Github CLI (optional, for downloading this repo easier)
 https://www.techiediaries.com/install-github-cli-ubuntu-20/
 
+#### Every Restart Notes
+
+Sometimes swap is on again on restart. 
+If the kubelet process (the daemon) gets stuck while running check your `/etc/fstab` and make sure the line about swap is removed so that the swap file isn't mounted. This needs to happen even if the `swapoff -a` is done, as fstab gets edited under the hood with swapoff.
+After doing this, k8s should work on startup.
+
 #### Docker and K8s Installation Steps 
 
 https://www.letscloud.io/community/how-to-install-kubernetesk8s-and-docker-on-ubuntu-2004
@@ -61,3 +67,9 @@ Check for success with
 ```
 kubectl get nodes
 ```
+
+##### Remove Taint on Master Node
+
+In order to schedule stuff on the master node, you must remove the taint on the master that disallows scheduling on the node (Can see this with `kubectl describe node master-node`.
+
+`kubectl patch node master-node -p '{"spec":{"taints":[]}}'`
