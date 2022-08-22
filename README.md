@@ -1,3 +1,8 @@
+### **AUGUST 22, 2022 UPDATE**
+
+After learning that i'd have to deal with k8s persistent volumes on this baremetal install, and of the potential issues resizing persistent volume claims, the kubernetes port of whitney is getting iceboxed and i'm going back to working on the docker deployment. See https://github.com/runyanjake/whitney for the current status of the whitney saga. Thanks!
+
+
 # whitney-k8s
 It's https://github.com/runyanjake/whitney, now with Kubernetes!
 
